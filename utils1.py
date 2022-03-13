@@ -29,7 +29,7 @@ def get_candidate(candidates):
 def get_candidate_id(user_id, candidates):
     """Функция Загружает пользователей по id для страницы /candidate"""
     for candidate in candidates:
-        if candidate["id"] == int(user_id):
+        if candidate["id"] == user_id:
             candidate_user = f'<img src="{candidate["picture"]}">\n\n' \
                              f'<pre>\nИмя кандидата - {candidate["name"]}\n' \
                              f'Позиция кандидата - {candidate["position"]}\n' \
@@ -45,7 +45,7 @@ def get_candidate_skills(user_skills, candidates):
     skill_list = ""
     all_candidate_skill = ""
     for candidate in candidates:
-        skill_list = candidate["skills"].lower()
+        skill_list = candidate["skills"].lower().split(",")
         if user_skills.lower() in skill_list:
             candidate_user = f'<pre>\nИмя кандидата - {candidate["name"]}\n' \
                              f'Позиция кандидата - {candidate["position"]}\n' \
